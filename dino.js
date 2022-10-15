@@ -5,20 +5,30 @@ const DINO_FRAME_COUNT = 2
 const FRAME_TIME = 100
 
 let isJumping
+let dinoFrame
 export function setUpDino() {
     isJumping = false
+    dinoFrame = 0
 }
 
-export function updateDino() {
+export function updateDino(delta, speedScale) {
     handleRun()
     handleJump()
 }
 
-function handleRun() {
+function handleRun(delta, speedScale) {
     if (isJumping) {
         dinoElem.src = `img/dino-stationary.png`
         return
     }
+
+    if (currentFrameTime >= FRAME_TIME) {
+        dinoFrame = (dinoFrame + 1) % DINO_FRAME_COUNT
+        dinoElem.src = `img/dino-run-${dinoFrame}.png`
+        currentFrameTime -= FRAME_TIME
+    }
+
+    currentFrameTime += delta * speedScale
 }
 
 function handleJump() {
