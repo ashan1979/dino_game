@@ -6,9 +6,11 @@ const FRAME_TIME = 100
 
 let isJumping
 let dinoFrame
+let currentFrameTime
 export function setUpDino() {
     isJumping = false
     dinoFrame = 0
+    currentFrameTime = 0
 }
 
 export function updateDino(delta, speedScale) {
