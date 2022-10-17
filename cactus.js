@@ -30,15 +30,15 @@ export function updateCactus(delta, speedScale) {
 }
 
 export function getCactusRects() {
-    return [...document.querySelectorAll("[data-cactus]")].map(cactus =>{
+    return [...document.querySelectorAll("[data-cactus]")].map(cactus => {
         return cactus.getBoundingClientRect()
     })
 }
 
 function createCactus() {
-    const cactus = document.createElement("div")
+    const cactus = document.createElement("img")
     cactus.dataset.cactus = true
-    cactus.src = "./img/cactus.png"
+    cactus.src = "img/cactus.png"
     cactus.classList.add("cactus")
     setCustomProperty(cactus, "--left", 100)
     worldElem.append(cactus)
