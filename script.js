@@ -6,9 +6,9 @@ const WORLD_WIDTH = 100
 const WORLD_HEIGHT = 30
 const SPEED_SCALE_INCREASE = 0.00001
 
-const worldElem = document.querySelector('[data-world]')
-const scoreElem = document.querySelector('[data-score]')
-const startScreenElem = document.querySelector('[data-start-screen]')
+const worldElem = document.querySelector("[data-world]")
+const scoreElem = document.querySelector("[data-score]")
+const startScreenElem = document.querySelector("[data-start-screen]")
 
 setPixelToWorldScale()
 window.addEventListener("resize", setPixelToWorldScale)
@@ -35,20 +35,23 @@ function update(time) {
 
     lastTime = time
     window.requestAnimationFrame(update)
+
+}
+
+function checkLose() {
+    const dinoRect = getDinoRect()
     return getCactusRects().some(rect => isCollision(rect, dinoRect))
 }
 
 function isCollision(rect1, rect2) {
-    return (rect1.left < rect2.right &&
+    return (
+        rect1.left < rect2.right &&
         rect1.top < rect2.bottom &&
         rect1.right > rect2.left &&
         rect1.bottom > rect2.top
         )
 }
 
-function checkLose() {
-    const dinoRect = getDinoRect()
-}
 
 function updateSpeedScale(delta) {
     speedScale += delta * SPEED_SCALE_INCREASE
