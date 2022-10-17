@@ -59,7 +59,7 @@ function updateSpeedScale(delta) {
 
 function updateScore(delta) {
     score += delta * 0.01
-    scoreElem.textContent = Math.floor()
+    scoreElem.textContent = Math.floor(score)
 }
 
 function handleStart () {

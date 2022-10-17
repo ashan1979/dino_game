@@ -1,4 +1,8 @@
-import { getCustomProperty, incrementCustomProperty, setCustomProperty } from "./updateCustomProperty"
+import {
+    getCustomProperty,
+    incrementCustomProperty,
+    setCustomProperty
+} from "./updateCustomProperty.js"
 
 const SPEED = 0.05
 const CACTUS_INTERVAL_MIN = 500
@@ -16,7 +20,7 @@ export function setUpCactus() {
 
 export function updateCactus(delta, speedScale) {
     document.querySelectorAll("[data-cactus]").forEach(cactus => {
-        incrementCustomProperty(cactus, "--left", delta * speedScale * SPEED - 1)
+        incrementCustomProperty(cactus, "--left", delta * speedScale * SPEED * -1)
         if (getCustomProperty(cactus, "--left") <= -100) {
             cactus.remove()
         }
